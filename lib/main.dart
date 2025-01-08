@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_mobile/config/di/di.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initDi();
   runApp(const MyApp());
 }
 
