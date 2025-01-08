@@ -7,10 +7,9 @@ import 'package:quiz_mobile/config/environment/environment_provider.dart';
 
 const int _closeTime = 3;
 
-void changeEnvironmentAction(
-  BuildContext context, {
-  required Environment env,
-}) async {
+void changeEnvironmentAction(BuildContext context) async {
+  final env = getIt.get<EnvironmentProvider>().environment == Environment.dev ? Environment.prod : Environment.dev;
+
   await getIt.get<EnvironmentProvider>().saveEnvironment(env);
   if (!context.mounted) return;
   ScaffoldMessenger.of(context).showSnackBar(
